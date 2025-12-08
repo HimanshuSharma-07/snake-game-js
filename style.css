@@ -77,8 +77,8 @@ section .infos{
     border: 1px solid var(--border-primary-color);
     flex-grow: 1;
     display: grid;
-    grid-template-columns: repeat(auto-fill, 30px);
-    grid-template-rows: repeat(auto-fill, 30px);
+    grid-template-columns: repeat(auto-fill, minmax(30px, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(30px, 1fr));
     
     
 }
@@ -87,6 +87,5 @@ section .infos{
     height: 30px;
     width: 30px;
     border: 1px solid var(--border-primary-color);
-
 
 }
