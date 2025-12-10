@@ -13,7 +13,8 @@ body{
 :root{
     /* Background Colors */
     --bg-primary-color: #0c0c0c;
-    --bg-fill-color:    #fdfdfc;
+    --bg-fill-color: #fdfdfc;
+    --bg-food-color: #ff3b3b;
 
 
     /* Text Colors */
@@ -88,10 +89,14 @@ section .infos{
     /* height: 30px;
     width: 30px; */
     border: 1px solid var(--border-primary-color);
-    
+    /* border-radius: 50%; */
 
 }
 
 .fill{
     background-color: var(--bg-fill-color);
+}
+
+.food{
+    background-color: var(--bg-food-color);
 }
