@@ -4,17 +4,25 @@ const restartBUtton = document.querySelector(".btn-game-over")
 const modal = document.querySelector(".modal")
 const modalOver = document.querySelector(".modal-over")
 const finalScore = document.querySelector(".final-score")
+const highScoreElement = document.querySelector("#high-score")
+const scoreElement = document.querySelector("#score")
+const timeElement = document.querySelector("#time")
 
 
 const blockHeight = 50
 const blockWidth = 50
+
+let highScore = 0
+let score = 0
+let time =`00-00`
+
+
 let intervalId = null;
 const cols = Math.floor(board.clientWidth / blockWidth)
 const rows = Math.floor(board.clientHeight / blockHeight)
 let setIntervalId = null;
 let food = { x: Math.floor(Math.random() * rows), y: Math.floor(Math.random() * cols) }
 
-let score = document.querySelector("#score")
 
 
 const blocks = []
@@ -65,7 +73,8 @@ function render() {
         
         finalScore.innerText = score.innerText
         clearInterval(intervalId)
-        modalOver.style.display = "flex" 
+        modalOver.style.display = "flex"
+        
         return;
         // window.location.reload()
 
@@ -83,12 +92,22 @@ function render() {
 
     })
 
-
+    
     if (head.x == food.x && head.y == food.y) {
         blocks[`${food.x} - ${food.y}`].classList.remove("food")
-        food = { x: Math.floor(Math.random() * rows), y: Math.floor(Math.random() * cols) }
-        blocks[`${food.x} - ${food.y}`].classList.add("food")
+        food = { 
+            x: Math.floor(Math.random() * rows), y: Math.floor(Math.random() * cols) 
+        }
+        blocks[`${food.x} - ${food.y}`].classList.add("food")   
         snake.push(head)
+
+        score += 10
+        scoreElement.innerText = score
+
+        if(score > highScore){
+            highScore = score
+            localStorage.setItem("highScore", highScore)
+        }
 
     }
 
