@@ -106,7 +106,7 @@ function render() {
 
         if(score > highScore){
             highScore = score
-            localStorage.setItem("highScore", highScore)
+            localStorage.setItem("highScore", highScore.toString())
         }
 
     }
@@ -139,6 +139,10 @@ function restartGame() {
         blocks[`${segment.x} - ${segment.y}`].classList.remove("fill")
 
     })
+
+    score = 0
+    time = `00-00`
+    scoreElement.innerText = score
 
     modalOver.style.display = "none"
     snake = [ { x: 1, y: 3 } ]
