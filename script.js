@@ -12,10 +12,11 @@ const timeElement = document.querySelector("#time")
 const blockHeight = 50
 const blockWidth = 50
 
-let highScore = 0
+let highScore = parseInt(localStorage.getItem("highScore")) || 0
 let score = 0
 let time =`00-00`
 
+highScoreElement.innerText = highScore
 
 let intervalId = null;
 const cols = Math.floor(board.clientWidth / blockWidth)
@@ -50,7 +51,7 @@ for (let row = 0; row < rows; row++) {
 
 function render() {
 
-
+    highScoreElement.innerText = highScore
     blocks[`${food.x} - ${food.y}`].classList.add("food")
 
     let head = null
@@ -142,7 +143,10 @@ function restartGame() {
 
     score = 0
     time = `00-00`
+
     scoreElement.innerText = score
+    timeElement.innerText = time
+    highScoreElement.innerText = highScore
 
     modalOver.style.display = "none"
     snake = [ { x: 1, y: 3 } ]
