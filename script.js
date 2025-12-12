@@ -124,7 +124,7 @@ startButton.addEventListener('click', () => {
         render()     
     }, 300)
 
-    setIntervalId = setInterval(() => {
+    timeIntervalId = setInterval(() => {
         let [min, sec] = time.split("-").map(Number)
 
         if( sec == 59){
@@ -135,9 +135,9 @@ startButton.addEventListener('click', () => {
             sec += 1
         }
 
-        time = `${min}-${sec}`
+        time = `${String(min).padStart(2, "0")}-${String(sec).padStart(2, "0")}`
         timeElement.innerText = time
-        console.log(typeof time);
+        
         
     }, 1000);
 
@@ -170,6 +170,7 @@ function restartGame() {
     intervalId = setInterval(() => {
         render()
     }, 300)
+
 
     
 }
